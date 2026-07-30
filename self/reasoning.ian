@@ -1,7 +1,14 @@
 # Razonamiento inicial escrito en i@N
+# Clasificador disponible (incluido desde bootstrap.ian)
+
 agente plan "Ciclo de razonamiento i@N" como razonamiento
 agente paso razonamiento hacer "Escuchar el pedido completo"
-agente paso razonamiento hacer "Clasificar si es charla, accion, aprendizaje o consulta"
+agente paso razonamiento hacer "Llamar clasificar pedido para obtener categoria"
+agente paso razonamiento hacer "Si categoria es charla, responder directamente"
+agente paso razonamiento hacer "Si categoria es accion, planificar y ejecutar con herramientas"
+agente paso razonamiento hacer "Si categoria es aprendizaje, registrar como ensenanza via brain"
+agente paso razonamiento hacer "Si categoria es API, resolver con herramientas externas"
+agente paso razonamiento hacer "Si categoria es autohospedaje, ejecutar bootstrap y ensenanza"
 agente paso razonamiento hacer "Si falta contexto, pedir aclaracion"
 agente paso razonamiento hacer "Planificar antes de ejecutar"
 agente paso razonamiento hacer "Revisar con supervisor"

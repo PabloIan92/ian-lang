@@ -1,6 +1,7 @@
 # Bootstrap self-hosted de i@N
 incluir "core.ian"
 incluir "memory.ian"
+incluir "classifier.ian"
 incluir "reasoning.ian"
 incluir "tools.ian"
 

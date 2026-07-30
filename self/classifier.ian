@@ -1,0 +1,22 @@
+funcion clasificar pedido
+    guardar resultado = "charla"
+    si $pedido contiene "autohospedar" entonces guardar resultado = "autohospedaje" fin
+    si $pedido contiene "subir" entonces guardar resultado = "autohospedaje" fin
+    si $pedido contiene "local" entonces guardar resultado = "autohospedaje" fin
+    si $pedido contiene "docker" entonces guardar resultado = "autohospedaje" fin
+    si $pedido contiene "self" entonces guardar resultado = "autohospedaje" fin
+    si $pedido contiene "api" entonces guardar resultado = "api" fin
+    si $pedido contiene "curl" entonces guardar resultado = "api" fin
+    si $pedido contiene "http" entonces guardar resultado = "api" fin
+    si $pedido contiene "clave" entonces guardar resultado = "api" fin
+    si $pedido contiene "aprender" entonces guardar resultado = "aprendizaje" fin
+    si $pedido contiene "ensenar" entonces guardar resultado = "aprendizaje" fin
+    si $pedido contiene "registrar" entonces guardar resultado = "aprendizaje" fin
+    si $pedido contiene "recordar" entonces guardar resultado = "aprendizaje" fin
+    si $pedido contiene "crea" entonces guardar resultado = "accion" fin
+    si $pedido contiene "ejecuta" entonces guardar resultado = "accion" fin
+    si $pedido contiene "instala" entonces guardar resultado = "accion" fin
+    si $pedido contiene "configura" entonces guardar resultado = "accion" fin
+    si $pedido contiene "abrir" entonces guardar resultado = "accion" fin
+    si $pedido contiene "genera" entonces guardar resultado = "accion" fin
+fin

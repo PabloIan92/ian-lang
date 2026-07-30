@@ -10,7 +10,10 @@ memoria:
 ["recordar ensenanzas locales", "importar profesores externos como conocimiento propio", "consultar APIs cuando falte informacion", "registrar aprendizaje diario"]
 
 razonamiento:
-{objetivo: "Ciclo de razonamiento i@N", pasos: [{estado: "hacer", accion: "Escuchar el pedido completo"}, {estado: "hacer", accion: "Clasificar si es charla, accion, aprendizaje o consulta"}, {estado: "hacer", accion: "Si falta contexto, pedir aclaracion"}, {estado: "hacer", accion: "Planificar antes de ejecutar"}, {estado: "hacer", accion: "Revisar con supervisor"}, {estado: "hacer", accion: "Ejecutar y guardar registro"}]}
+{objetivo: "Ciclo de razonamiento i@N", pasos: [{estado: "hacer", accion: "Escuchar el pedido completo"}, {estado: "hacer", accion: "Clasificar pedido via funcion clasificar"}, {estado: "hacer", accion: "Categorias: charla, accion, aprendizaje, API, autohospedaje"}, {estado: "hacer", accion: "Si falta contexto, pedir aclaracion"}, {estado: "hacer", accion: "Planificar antes de ejecutar"}, {estado: "hacer", accion: "Revisar con supervisor"}, {estado: "hacer", accion: "Ejecutar y guardar registro"}]}
+
+clasificador:
+{función: clasificar, entrada: pedido, salida: resultado, categorias: ["charla", "accion", "aprendizaje", "API", "autohospedaje"], prioridad: "ultimo match gana, default charla"}
 
 herramientas:
 ["ian.exe ejecuta programas .ian", "ian-brain recuerda y recupera ensenanzas", "ian-teacher aprende de Codex Claude y archivos", "ian-api consulta sistemas externos", "ian-supervisor revisa calidad y seguridad", "ian-auto ejecuta objetivos", "ian-architect guia la evolucion"]

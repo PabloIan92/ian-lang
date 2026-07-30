@@ -35,6 +35,9 @@ class IanBrain
             if (cmd == "estado")          return Status();
             if (cmd == "vision")          return Vision();
             if (cmd == "chat")            return Chat();
+            if (cmd == "puntuar")         return ScoreAll();
+            if (cmd == "top")             return TopMemories(args);
+            if (cmd == "validar")         return Validate(args);
             throw new Exception("Comando desconocido: " + args[0]);
         }
         catch (Exception ex) { Console.Error.WriteLine("i@N Brain error: " + ex.Message); return 1; }
@@ -43,7 +46,7 @@ class IanBrain
     static void Help()
     {
         Console.WriteLine("i@N Brain " + Version);
-        Console.WriteLine("Uso: aprender | preguntar | crear | ejecutar | importar | estado | vision | chat");
+        Console.WriteLine("Uso: aprender | preguntar | crear | ejecutar | importar | estado | vision | chat | puntuar | top | validar");
     }
 
     // -------------------------------------------------------------------------
@@ -74,11 +77,44 @@ class IanBrain
 
     static void AppendMemory(string prompt, string program, string source)
     {
+        string now = DateTime.Now.ToString("s");
         File.AppendAllText(
             MemoryFile,
-            Escape(prompt) + "\t" + Escape(program) + "\t" + DateTime.Now.ToString("s") + "\t" + source + Environment.NewLine,
+            Escape(prompt) + "\t" + Escape(program) + "\t" + now + "\t" + source + "\t0\t" + now + "\t" + Environment.NewLine,
             Encoding.UTF8
         );
+    }
+
+    static List<MemoryEntry> ReadAllEntries()
+    {
+        var entries = new List<MemoryEntry>();
+        if (!File.Exists(MemoryFile)) return entries;
+        foreach (string line in File.ReadAllLines(MemoryFile, Encoding.UTF8))
+        {
+            string[] parts = line.Split('\t');
+            if (parts.Length < 4) continue;
+            var e = new MemoryEntry();
+            e.Prompt = Unescape(parts[0]);
+            e.Code = Unescape(parts[1]);
+            DateTime.TryParseExact(parts[2], "s", null, DateTimeStyles.None, out DateTime ts);
+            e.Timestamp = ts == default ? DateTime.Now : ts;
+            e.Source = parts[3];
+            if (parts.Length >= 5) int.TryParse(parts[4], out e.HitCount);
+            if (parts.Length >= 6) DateTime.TryParseExact(parts[5], "s", null, DateTimeStyles.None, out e.LastAccess);
+            if (e.LastAccess == default) e.LastAccess = e.Timestamp;
+            if (parts.Length >= 7) float.TryParse(parts[6], NumberStyles.Any, CultureInfo.InvariantCulture, out e.Quality);
+            entries.Add(e);
+        }
+        return entries;
+    }
+
+    static void WriteAllEntries(List<MemoryEntry> entries)
+    {
+        var sb = new StringBuilder();
+        foreach (var e in entries)
+            sb.Append(Escape(e.Prompt) + "\t" + Escape(e.Code) + "\t" + e.Timestamp.ToString("s") + "\t" + e.Source
+                + "\t" + e.HitCount + "\t" + e.LastAccess.ToString("s") + "\t" + e.Quality.ToString("F3", CultureInfo.InvariantCulture) + Environment.NewLine);
+        File.WriteAllText(MemoryFile, sb.ToString(), Encoding.UTF8);
     }
 
     // -------------------------------------------------------------------------
@@ -138,11 +174,19 @@ class IanBrain
 
     static int Status()
     {
-        int memories = File.Exists(MemoryFile) ? File.ReadAllLines(MemoryFile, Encoding.UTF8).Length : 0;
-        int ctx      = File.Exists(ContextFile) ? File.ReadAllLines(ContextFile, Encoding.UTF8).Length : 0;
+        var entries = ReadAllEntries();
+        int ctx = File.Exists(ContextFile) ? File.ReadAllLines(ContextFile, Encoding.UTF8).Length : 0;
+        int total = entries.Count;
+        int sinHits = entries.Count(e => e.HitCount == 0);
+        float avgQuality = total > 0 ? entries.Average(e => e.Quality) : 0;
+        var topSrc = entries.GroupBy(e => e.Source).OrderByDescending(g => g.Count()).FirstOrDefault();
+        string srcInfo = topSrc != null ? topSrc.Key + ":" + topSrc.Count() : "n/a";
+
         Console.WriteLine("i@N Brain v" + Version);
-        Console.WriteLine("Memorias guardadas : " + memories);
+        Console.WriteLine("Memorias guardadas : " + total + " (sin hits: " + sinHits + ")");
         Console.WriteLine("Contexto de sesion : " + ctx + " turnos recientes");
+        Console.WriteLine("Calidad promedio   : " + avgQuality.ToString("F3"));
+        Console.WriteLine("Fuente principal   : " + srcInfo);
         return 0;
     }
 
@@ -205,6 +249,89 @@ class IanBrain
     }
 
     // -------------------------------------------------------------------------
+    //  SCORING COMMANDS
+    // -------------------------------------------------------------------------
+
+    static int ScoreAll()
+    {
+        var entries = ReadAllEntries();
+        if (entries.Count == 0) { Console.WriteLine("No hay memorias para puntuar."); return 0; }
+        float maxHit = entries.Max(e => (float)e.HitCount);
+        if (maxHit < 1) maxHit = 1;
+
+        int updated = 0;
+        for (int i = 0; i < entries.Count; i++)
+        {
+            var e = entries[i];
+            string[] pw = Words(e.Prompt);
+            if (pw.Length == 0) continue;
+            double age = (DateTime.Now - e.Timestamp).TotalDays;
+            float relevance = 1.0f;
+            float recency = (float)Math.Max(0, 1.0 - age / 90.0);
+            float sourceQuality = SourceQuality(e.Source);
+            float popularity = maxHit > 0 ? e.HitCount / maxHit : 0;
+            float newScore = relevance * 0.40f + recency * 0.25f + sourceQuality * 0.20f + popularity * 0.15f;
+            if (Math.Abs(e.Quality - newScore) > 0.001f) updated++;
+            e.Quality = newScore;
+            entries[i] = e;
+        }
+        WriteAllEntries(entries);
+
+        var ranked = entries.OrderByDescending(e => e.Quality).ToList();
+        Console.WriteLine("Puntajes recalculados para " + entries.Count + " memorias (" + updated + " cambiaron).");
+        Console.WriteLine("Top 5:");
+        for (int i = 0; i < Math.Min(5, ranked.Count); i++)
+        {
+            var e = ranked[i];
+            string preview = e.Prompt.Length > 60 ? e.Prompt.Substring(0, 57) + "..." : e.Prompt;
+            Console.WriteLine("  " + (i + 1) + ". [" + e.Quality.ToString("F3") + "] " + preview + " (" + e.Source + ")");
+        }
+        return 0;
+    }
+
+    static int TopMemories(string[] args)
+    {
+        int n = 10;
+        if (args.Length >= 2) int.TryParse(args[1], out n);
+        var entries = ReadAllEntries();
+        if (entries.Count == 0) { Console.WriteLine("No hay memorias."); return 0; }
+        var ranked = entries.OrderByDescending(e => e.Quality).ToList();
+        Console.WriteLine("Top " + n + " memorias:");
+        for (int i = 0; i < Math.Min(n, ranked.Count); i++)
+        {
+            var e = ranked[i];
+            string preview = e.Prompt.Length > 50 ? e.Prompt.Substring(0, 47) + "..." : e.Prompt;
+            string hits = e.HitCount > 0 ? " usos:" + e.HitCount : "";
+            Console.WriteLine("  " + (i + 1) + ". Q=" + e.Quality.ToString("F3") + " R=" + e.LastAccess.ToString("MM/dd")
+                + " F=" + e.Source + hits + " \"" + preview + "\"");
+        }
+        return 0;
+    }
+
+    static int Validate(string[] args)
+    {
+        var entries = ReadAllEntries();
+        if (entries.Count == 0) { Console.WriteLine("No hay memorias para validar."); return 0; }
+        int validos = 0;
+        int invalidos = 0;
+        foreach (var e in entries)
+        {
+            if (string.IsNullOrWhiteSpace(e.Code)) { invalidos++; continue; }
+            string code = e.Code.Trim();
+            if (code.StartsWith("#") || code.StartsWith("ia ") || code.StartsWith("web ") || code.StartsWith("excel ")
+                || code.StartsWith("word ") || code.StartsWith("api ") || code.StartsWith("mikrotik "))
+                { validos++; }
+            else
+                { invalidos++; }
+        }
+        Console.WriteLine("Validacion de sintaxis basica completada.");
+        Console.WriteLine("  Validas: " + validos);
+        Console.WriteLine("  Invalidas: " + invalidos);
+        Console.WriteLine("  Total: " + entries.Count);
+        return invalidos > 0 ? 1 : 0;
+    }
+
+    // -------------------------------------------------------------------------
     //  CONTEXT (session memory)
     // -------------------------------------------------------------------------
 
@@ -250,14 +377,13 @@ class IanBrain
     {
         string[] pw = Words(prompt);
 
-        // Memoria: requiere al menos 60% de cobertura Y 2+ palabras coincidentes
-        // Esto evita falsos matches en preguntas cortas o con pocas palabras comunes
+        // Memoria con scoring multi-factor (relevancia, recencia, fuente, popularidad)
+        // Puntaje ponderado 0-1. Umbral minimo 0.25 para match confiable
         MemoryMatch match = BestMemory(prompt, 0.60f);
-        if (match.Score >= 2) return match.Program;
+        if (match.Score >= 0.25f) return match.Program;
 
-        // Para preguntas de una sola palabra significativa (hola, gracias, etc.)
-        // un match perfecto (100%) con score=1 es v??lido
-        if (match.Score == 1 && pw.Length == 1) return match.Program;
+        // Para preguntas de una sola palabra: requiere match casi perfecto
+        if (match.Score >= 0.20f && pw.Length == 1) return match.Program;
 
         // Sin memoria confiable ??? DeepSeek (si tiene API key) ??? Claude
         string ds = AskDeepSeekAsIan(prompt);
@@ -519,15 +645,34 @@ class IanBrain
         string[] promptWords = Words(prompt);
         if (promptWords.Length == 0) return best;
 
-        foreach (string line in File.ReadAllLines(MemoryFile, Encoding.UTF8))
+        var entries = ReadAllEntries();
+        float maxHit = entries.Count > 0 ? entries.Max(e => (float)e.HitCount) : 1;
+        if (maxHit < 1) maxHit = 1;
+
+        foreach (var e in entries)
         {
-            string[] parts = line.Split('\t');
-            if (parts.Length < 2) continue;
-            string key = Unescape(parts[0]);
-            int score = Score(promptWords, Words(key));
-            if (score >= 1 && (float)score / promptWords.Length >= minCoverage && score > best.Score)
-                best = new MemoryMatch(Unescape(parts[1]), score);
+            string[] memoryWords = Words(e.Prompt);
+            int matched = Score(promptWords, memoryWords);
+            float coverage = promptWords.Length > 0 ? (float)matched / promptWords.Length : 0;
+            if (matched < 1 || coverage < minCoverage) continue;
+
+            float relevance = (float)matched / promptWords.Length;
+            double age = (DateTime.Now - e.Timestamp).TotalDays;
+            float recency = (float)Math.Max(0, 1.0 - age / 90.0);
+            float sourceQuality = SourceQuality(e.Source);
+            float popularity = maxHit > 0 ? e.HitCount / maxHit : 0;
+
+            float weighted = relevance * 0.40f + recency * 0.25f + sourceQuality * 0.20f + popularity * 0.15f;
+
+            if (weighted > best.Score)
+            {
+                best = new MemoryMatch(e.Code, weighted);
+                e.HitCount++;
+                e.LastAccess = DateTime.Now;
+            }
         }
+        if (!string.IsNullOrEmpty(best.Program))
+            WriteAllEntries(entries);
         return best;
     }
 
@@ -544,6 +689,18 @@ class IanBrain
             }
         }
         return s;
+    }
+
+    static float SourceQuality(string source)
+    {
+        switch (source)
+        {
+            case "manual": return 1.0f;
+            case "archivo": return 0.8f;
+            case "claude-auto": return 0.6f;
+            case "deepseek-auto": return 0.4f;
+            default: return 0.3f;
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -611,10 +768,21 @@ class IanBrain
     }
 }
 
+struct MemoryEntry
+{
+    public string Prompt;
+    public string Code;
+    public DateTime Timestamp;
+    public string Source;
+    public int HitCount;
+    public DateTime LastAccess;
+    public float Quality;
+}
+
 struct MemoryMatch
 {
     public string Program;
-    public int Score;
-    public MemoryMatch(string p, int s) { Program = p; Score = s; }
+    public float Score;
+    public MemoryMatch(string p, float s) { Program = p; Score = s; }
 }
 
