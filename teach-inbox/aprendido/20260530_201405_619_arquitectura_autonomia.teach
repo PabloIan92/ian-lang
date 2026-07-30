@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura autonomia
+agente plan "Construir modulo autonomia" como plan
+agente paso plan hacer "Objetivo: actuar por objetivos y registrar logs"
+agente paso plan hacer "Version superior: hacer ciclos repetibles: pensar, ejecutar, revisar, aprender"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

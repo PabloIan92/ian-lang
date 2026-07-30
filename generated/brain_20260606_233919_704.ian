@@ -1,0 +1,7 @@
+﻿web crear "empresa"
+web titulo "Construcciones del Sur"
+web subtitulo "Calidad y experiencia en cada obra"
+web parrafo "Somos una empresa argentina especializada en construcción, refacción y administración de obras. Trabajamos con compromiso, materiales de primera calidad y un equipo de profesionales con años de experiencia en el sector."
+web lista "Construcción de viviendas y edificios" "Refacciones y ampliaciones" "Dirección técnica de obras" "Presupuestos sin cargo"
+web parrafo "Contactanos para recibir tu presupuesto personalizado. Atendemos en todo el país."
+web guardar "empresa_construccion.html"

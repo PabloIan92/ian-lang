@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Styles>
+  <Style ss:ID="H"><Font ss:Bold="1"/><Interior ss:Color="#111827" ss:Pattern="Solid"/><Font ss:Color="#FFFFFF" ss:Bold="1"/></Style>
+  <Style ss:ID="N"><Alignment ss:Vertical="Center"/></Style>
+ </Styles>
+ <Worksheet ss:Name="Materiales">
+  <Table>
+   <Row ss:StyleID="H"><Cell><Data ss:Type="String">Material</Data></Cell><Cell><Data ss:Type="String">Unidad</Data></Cell><Cell><Data ss:Type="String">Cantidad</Data></Cell><Cell><Data ss:Type="String">Precio Unit</Data></Cell><Cell><Data ss:Type="String">Total</Data></Cell></Row>
+   <Row ss:StyleID="N"><Cell><Data ss:Type="String">Cemento Portland</Data></Cell><Cell><Data ss:Type="String">bolsa</Data></Cell><Cell><Data ss:Type="Number">200</Data></Cell><Cell><Data ss:Type="Number">1200</Data></Cell><Cell><Data ss:Type="Number">240000</Data></Cell></Row>
+   <Row ss:StyleID="N"><Cell><Data ss:Type="String">Arena gruesa</Data></Cell><Cell><Data ss:Type="String">m3</Data></Cell><Cell><Data ss:Type="Number">15</Data></Cell><Cell><Data ss:Type="Number">8500</Data></Cell><Cell><Data ss:Type="Number">127500</Data></Cell></Row>
+   <Row ss:StyleID="N"><Cell><Data ss:Type="String">Hierro 12mm</Data></Cell><Cell><Data ss:Type="String">barra</Data></Cell><Cell><Data ss:Type="Number">80</Data></Cell><Cell><Data ss:Type="Number">2800</Data></Cell><Cell><Data ss:Type="Number">224000</Data></Cell></Row>
+   <Row ss:StyleID="N"><Cell><Data ss:Type="String">Hormigon H-25</Data></Cell><Cell><Data ss:Type="String">m3</Data></Cell><Cell><Data ss:Type="Number">25</Data></Cell><Cell><Data ss:Type="Number">45000</Data></Cell><Cell><Data ss:Type="Number">1125000</Data></Cell></Row>
+  </Table>
+ </Worksheet>
+</Workbook>

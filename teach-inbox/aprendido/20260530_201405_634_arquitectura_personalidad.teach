@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura personalidad
+agente plan "Construir modulo personalidad" como plan
+agente paso plan hacer "Objetivo: hablar de forma natural"
+agente paso plan hacer "Version superior: ser claro, breve, no robotico y admitir limites"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

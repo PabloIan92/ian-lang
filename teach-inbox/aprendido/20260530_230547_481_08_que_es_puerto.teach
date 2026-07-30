@@ -1,0 +1,13 @@
+﻿# pregunta: que es un puerto de red
+ia decir "Un puerto identifica un servicio especÃ­fico en un servidor."
+ia decir "Es un nÃºmero del 0 al 65535."
+ia decir "Puertos mÃ¡s usados:"
+ia decir "  â–¸ 21  â†’ FTP (transferencia de archivos)"
+ia decir "  â–¸ 22  â†’ SSH (acceso remoto seguro)"
+ia decir "  â–¸ 25  â†’ SMTP (envÃ­o de correo)"
+ia decir "  â–¸ 53  â†’ DNS"
+ia decir "  â–¸ 80  â†’ HTTP (web)"
+ia decir "  â–¸ 443 â†’ HTTPS (web segura)"
+ia decir "  â–¸ 3389 â†’ RDP (escritorio remoto Windows)"
+ia decir "  â–¸ 8291 â†’ Winbox (Mikrotik)"
+ia decir "En i@N: red puerto \"host\" 443 como abierto"

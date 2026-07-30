@@ -1,0 +1,8 @@
+﻿# pregunta: aprendizaje diario sobre Geothlypis flavovelata
+agente plan "Aprender algo nuevo cada dia" como plan
+agente paso plan hacer "Consultar fuente externa"
+agente paso plan hacer "Guardar resumen en memoria local"
+decir "Aprendizaje diario: Geothlypis flavovelata"
+decir "La mascarita de Altamira o chipe de corona amarilla es una especie de ave paseriforme de la familia Parulidae perteneciente al numeroso género Geothlypis. Es endémica del noreste de México."
+agente json plan como resumen
+decir $resumen

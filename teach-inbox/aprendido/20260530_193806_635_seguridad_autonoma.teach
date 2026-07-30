@@ -1,0 +1,9 @@
+# pregunta: reglas de seguridad para autonomia
+agente plan "Reglas de seguridad autonoma" como plan
+agente paso plan hacer "No borrar archivos ni cambiar sistema sin instruccion clara"
+agente paso plan hacer "Preferir crear archivos nuevos antes que modificar archivos existentes"
+agente paso plan hacer "Registrar cada accion en autonomy-logs"
+agente paso plan hacer "Mantener las ensenanzas como texto revisable"
+agente paso plan hacer "Separar motor, agente, cerebro, profesor y autonomia"
+agente json plan como resumen
+decir $resumen

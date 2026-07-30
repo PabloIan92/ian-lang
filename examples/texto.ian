@@ -1,0 +1,25 @@
+# Operaciones de texto
+guardar nombre = "  Juan Pérez  "
+texto recortar $nombre como nombre_limpio
+texto longitud $nombre_limpio como largo
+texto mayusculas $nombre_limpio como upper
+texto minusculas $nombre_limpio como lower
+
+decir $nombre_limpio
+decir $largo
+decir $upper
+decir $lower
+
+# Concatenar partes
+guardar empresa = "AC Construcciones"
+guardar ciudad = "Buenos Aires"
+unir $empresa " — " $ciudad como presentacion
+decir $presentacion
+
+# Buscar contenido
+texto contiene $presentacion "Construcciones" como encontrado
+si $encontrado entonces
+  decir "Es una empresa de construcción"
+sino
+  decir "No es construcción"
+fin

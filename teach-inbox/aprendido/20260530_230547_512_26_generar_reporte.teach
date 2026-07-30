@@ -1,0 +1,12 @@
+﻿# pregunta: generar reporte en html
+agente plan "Generar reporte HTML" como plan
+agente paso plan hacer "Crear reporte con datos"
+web iniciar "Reporte de Sistema" como reporte
+web titulo reporte "Reporte de Estado del Sistema"
+web texto reporte "Generado automÃ¡ticamente por i@N"
+web texto reporte "Fecha de generaciÃ³n: hoy"
+web texto reporte "Estado de la red: verificado"
+web boton reporte "Imprimir" mensaje "Use Ctrl+P para imprimir este reporte"
+web guardar reporte en "salida/reporte.html"
+ia decir "Reporte generado en salida/reporte.html"
+agente json plan como resumen

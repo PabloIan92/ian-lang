@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura clasificador
+agente plan "Construir modulo clasificador" como plan
+agente paso plan hacer "Objetivo: separar conversacion, accion, aprendizaje, API y codigo"
+agente paso plan hacer "Version superior: evitar mandar charla al generador de programas"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

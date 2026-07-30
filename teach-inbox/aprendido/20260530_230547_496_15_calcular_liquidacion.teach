@@ -1,0 +1,27 @@
+﻿# pregunta: calcular liquidacion de sueldo
+agente plan "LiquidaciÃ³n de sueldo" como plan
+agente paso plan hacer "Calcular haberes y deducciones"
+guardar sueldo_bruto = 500000
+guardar jubilacion = 0.11
+guardar obra_social = 0.03
+guardar aporte_sindical = 0.02
+multiplicar $sueldo_bruto $jubilacion como desc_jubilacion
+multiplicar $sueldo_bruto $obra_social como desc_obra
+multiplicar $sueldo_bruto $aporte_sindical como desc_sindical
+sumar $desc_jubilacion $desc_obra como total_parcial
+sumar $total_parcial $desc_sindical como total_deducciones
+restar $sueldo_bruto $total_deducciones como sueldo_neto
+ia decir "=== LIQUIDACIÃ“N DE SUELDO ==="
+ia decir "Sueldo bruto:"
+decir $sueldo_bruto
+ia decir "JubilaciÃ³n (11%):"
+decir $desc_jubilacion
+ia decir "Obra social (3%):"
+decir $desc_obra
+ia decir "Aporte sindical (2%):"
+decir $desc_sindical
+ia decir "Total deducciones:"
+decir $total_deducciones
+ia decir "SUELDO NETO:"
+decir $sueldo_neto
+agente json plan como resumen

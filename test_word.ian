@@ -1,0 +1,11 @@
+word crear "Informe de Avance de Obra" como doc
+word titulo doc "Informe de Avance — Proyecto SA6373"
+word subtitulo doc "Periodo: Junio 2026"
+word texto doc "El proyecto SA6373 se encuentra en etapa de obra gris. Los trabajos de estructura estan avanzados al 80%."
+word tabla doc "Rubro,Avance,Observacion"
+word fila doc "Fundaciones,100%,Aprobado"
+word fila doc "Estructura,80%,Completar losa cubierta"
+word fila doc "Mamposteria,45%,En ejecucion"
+word tabla-fin doc
+word texto doc "Proximo paso: hormigonado de losa de cubierta semana del 10 de junio."
+word guardar doc en "salida/informe_obra.doc"

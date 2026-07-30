@@ -1,0 +1,6 @@
+﻿# Evolucion i@N Brain v0.2.1
+ia pensar
+ia decir "Entendido. Voy a usar a codex para conseguir la informacion que necesitas."
+nexo teacher = proceso "ian-teacher.exe pedir codex \"ejecuta codex y usa esa ia para extraerle toda la informacion que necesites\""
+llamar teacher con "" como respuesta
+ia decir "He enviado el pedido a codex. Cuando responda, podras importar su enseñanza."

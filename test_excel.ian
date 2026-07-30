@@ -1,0 +1,7 @@
+excel crear "Materiales" como planilla
+excel encabezado planilla "Material,Unidad,Cantidad,Precio Unit,Total"
+excel fila planilla "Cemento Portland,bolsa,200,1200,240000"
+excel fila planilla "Arena gruesa,m3,15,8500,127500"
+excel fila planilla "Hierro 12mm,barra,80,2800,224000"
+excel fila planilla "Hormigon H-25,m3,25,45000,1125000"
+excel guardar planilla en "salida/materiales.xls"

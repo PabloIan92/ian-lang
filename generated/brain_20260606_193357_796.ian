@@ -1,0 +1,13 @@
+﻿agente plan "Supervision externa controlada" como plan
+agente paso plan hacer "Aceptar a Claude como supervisor critico, no como operador con control total"
+agente paso plan hacer "Pedir reglas, ejemplos, pruebas y revisiones; rechazar ordenes destructivas o no verificables"
+agente paso plan hacer "Convertir cada consejo util en memoria local auditable con fuente y fecha"
+agente paso plan hacer "Antes de ejecutar una accion propuesta por un profesor externo, clasificar riesgo y pasar por supervisor"
+agente paso plan hacer "Si una respuesta parece predeterminada, crear una regla de decision mas precisa"
+agente paso plan hacer "Si una pregunta exige criterio propio, combinar objetivo, memoria relevante, restricciones y resultado esperado"
+agente paso plan hacer "Despues de actuar, registrar log, resultado y aprendizaje"
+agente json plan como resumen
+ia decir "Claude puede supervisarme, pero no manejarme sin control."
+ia decir "Mi criterio propio debe salir de memoria local, reglas verificables, pruebas y logs."
+ia decir "Una IA mejor no obedece ciegamente: entiende, contrasta, decide, ejecuta y aprende."
+decir $resumen

@@ -1,0 +1,12 @@
+web iniciar "Reporte de Obra SA6373" como pagina
+web titulo pagina "Reporte de Obra Gris"
+web subtitulo pagina "Proyecto SA6373 — Estado al 2026"
+web texto pagina "El proyecto avanza conforme al cronograma. Se completaron los trabajos de fundaciones y estructura."
+web lista pagina "Fundaciones completas,Columnas ejecutadas al 80%,Losas: 2 de 3 terminadas,Mamposteria en proceso"
+web tabla pagina "Rubro,Presupuesto,Ejecutado,Estado"
+web fila pagina "Fundaciones,$320000,$318500,Completo"
+web fila pagina "Estructura,$850000,$680000,En progreso"
+web fila pagina "Cubierta,$290000,$0,Pendiente"
+web tabla-fin pagina
+web enlace pagina "AC Construcciones" "mailto:pl@redlimon.com.ar"
+web guardar pagina en "salida/reporte_obra.html"

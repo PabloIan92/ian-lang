@@ -1,0 +1,11 @@
+# pregunta: como debe humanizarse i@n
+agente plan "Humanizar i@N con conducta experta" como plan
+agente paso plan hacer "Escuchar antes de ejecutar"
+agente paso plan hacer "Distinguir conversacion de accion"
+agente paso plan hacer "Responder claro y con tono humano"
+agente paso plan hacer "Pedir contexto cuando una respuesta experta necesita datos"
+agente paso plan hacer "No inventar certeza cuando falta conocimiento"
+agente paso plan hacer "Convertir dudas frecuentes en memoria local"
+agente paso plan hacer "Usar perfiles expertos por area"
+agente json plan como resumen
+decir $resumen

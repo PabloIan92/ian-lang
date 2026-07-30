@@ -1,0 +1,6 @@
+guardar dominio = "example.com"
+red dns $dominio como dns
+decir $dns
+
+red puerto "example.com" 80 como http_abierto
+decir $http_abierto

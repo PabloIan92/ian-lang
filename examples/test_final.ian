@@ -1,0 +1,36 @@
+﻿# Prueba Integral i@N v0.4.3
+
+decir "--- Prueba 1: Funciones y Retorno ---"
+funcion calcular_doble x
+  multiplicar $x 2 como resultado
+fin
+
+llamar calcular_doble 21 como mi_doble
+decir "El doble de 21 es:" $mi_doble
+
+decir ""
+decir "--- Prueba 2: Foreach ---"
+lista crear como colores
+lista agregar colores "Rojo"
+lista agregar colores "Verde"
+lista agregar colores "Azul"
+
+repetir para cada c en colores
+  decir "Color:" $c
+fin
+
+decir ""
+decir "--- Prueba 3: Condicionales de Archivo ---"
+archivo escribir "test.log" "datos"
+si archivo existe "test.log" entonces
+  decir "Archivo test.log encontrado."
+fin
+
+decir ""
+decir "--- Prueba 4: Anidamiento ---"
+repetir 2 veces
+  decir "Bucle externo"
+  repetir para cada c en colores
+    decir "  Interno:" $c
+  fin
+fin

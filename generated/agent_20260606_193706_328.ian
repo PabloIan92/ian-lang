@@ -1,0 +1,7 @@
+﻿# Generado por i@N Agent
+agente plan "Resolver pedido: escanear red local y generar reporte" como plan
+agente paso plan hacer "Comprobar puerto de red"
+red puerto "example.com" 80 como puerto_abierto
+decir $puerto_abierto
+agente json plan como resumen
+decir $resumen

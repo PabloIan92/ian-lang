@@ -1,0 +1,41 @@
+﻿# i@N v0.4.4 - Demo Integral de Capacidades
+# Este script demuestra funciones, listas, loops y condicionales avanzados.
+
+ia limpiar
+ia decir "--- Iniciando Demo Integral i@N ---"
+ia pensar
+
+# 1. Definicion de funciones
+funcion formatear_mensaje texto color
+  unir "[" $color "] >> " $texto como resultado
+fin
+
+# 2. Manejo de listas
+lista crear como servidores
+lista agregar hosts "google.com"
+lista agregar hosts "1.1.1.1"
+lista agregar hosts "microsoft.com"
+
+ia decir "Verificando estado de red para una lista de servidores..."
+
+repetir para cada s en servidores
+  red puerto $s 80 como online
+  si $online es verdadero entonces
+    llamar formatear_mensaje $s "VERDE" como msg
+    decir $msg
+  sino
+    llamar formatear_mensaje $s "ROJO" como msg
+    decir $msg
+  fin
+fin
+
+# 3. Trabajo con archivos
+guardar archivo_log = "estado_red.txt"
+archivo escribir $archivo_log "Log de verificacion realizado por i@N"
+archivo agregar $archivo_log "\nTodos los servidores fueron procesados."
+
+si archivo existe $archivo_log entonces
+  ia decir "El reporte ha sido guardado exitosamente en: " $archivo_log
+fin
+
+ia decir "--- Fin de la Demo ---"

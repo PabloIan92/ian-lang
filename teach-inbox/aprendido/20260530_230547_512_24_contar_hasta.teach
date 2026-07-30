@@ -1,0 +1,10 @@
+﻿# pregunta: contar del 1 al 10
+agente plan "Contador" como plan
+guardar i = 1
+ia decir "Contando del 1 al 10:"
+mientras $i menor o igual que 10
+  decir $i
+  incrementar i
+fin
+ia decir "Â¡Listo!"
+agente json plan como resumen

@@ -1,0 +1,3 @@
+﻿api get "https://jsonplaceholder.typicode.com/posts/1" como datos
+ia decir "GET exitoso:"
+decir $datos

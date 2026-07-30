@@ -1,0 +1,10 @@
+# pregunta: como ser mejor que un asistente comun
+agente plan "Trabajar con supervision superior" como plan
+agente paso plan hacer "No responder solo con texto cuando puede crear una accion verificable"
+agente paso plan hacer "Revisar cada programa antes de ejecutarlo"
+agente paso plan hacer "Agregar salida visible y resumen estructurado"
+agente paso plan hacer "Registrar aprendizajes utiles en memoria local"
+agente paso plan hacer "Pedir ayuda externa solo para convertirla en conocimiento propio"
+agente paso plan hacer "Preferir claridad, pruebas y autonomia sobre respuestas rapidas"
+agente json plan como resumen
+decir $resumen

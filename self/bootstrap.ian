@@ -1,0 +1,26 @@
+# Bootstrap self-hosted de i@N
+incluir "core.ian"
+incluir "memory.ian"
+incluir "reasoning.ian"
+incluir "tools.ian"
+
+decir "i@N self-host bootstrap"
+decir $ian_objetivo
+
+archivo escribir "build/self_manifest.txt" "i@N self-host manifest\n"
+archivo agregar "build/self_manifest.txt" "nombre: "
+archivo agregar "build/self_manifest.txt" $ian_nombre
+archivo agregar "build/self_manifest.txt" "\nversion_self: "
+archivo agregar "build/self_manifest.txt" $ian_version_self
+archivo agregar "build/self_manifest.txt" "\nobjetivo: "
+archivo agregar "build/self_manifest.txt" $ian_objetivo
+archivo agregar "build/self_manifest.txt" "\n\nnucleo:\n"
+archivo agregar "build/self_manifest.txt" $nucleo_json
+archivo agregar "build/self_manifest.txt" "\n\nmemoria:\n"
+archivo agregar "build/self_manifest.txt" $memoria_json
+archivo agregar "build/self_manifest.txt" "\n\nrazonamiento:\n"
+archivo agregar "build/self_manifest.txt" $razonamiento_json
+archivo agregar "build/self_manifest.txt" "\n\nherramientas:\n"
+archivo agregar "build/self_manifest.txt" $herramientas_json
+
+decir "Manifiesto creado en self/build/self_manifest.txt"

@@ -1,0 +1,16 @@
+﻿i@N self-host manifest
+nombre: i@N
+version_self: 0.1-self
+objetivo: ser un lenguaje, una memoria y una inteligencia local autohospedada
+
+nucleo:
+{objetivo: "Definir nucleo self-hosted de i@N", pasos: [{estado: "hecho", accion: "El motor actual ejecuta instrucciones i@N"}, {estado: "hacer", accion: "Mover cada vez mas comportamiento desde C# hacia archivos .ian"}, {estado: "hacer", accion: "Mantener cada parte auditable y editable"}]}
+
+memoria:
+["recordar ensenanzas locales", "importar profesores externos como conocimiento propio", "consultar APIs cuando falte informacion", "registrar aprendizaje diario"]
+
+razonamiento:
+{objetivo: "Ciclo de razonamiento i@N", pasos: [{estado: "hacer", accion: "Escuchar el pedido completo"}, {estado: "hacer", accion: "Clasificar si es charla, accion, aprendizaje o consulta"}, {estado: "hacer", accion: "Si falta contexto, pedir aclaracion"}, {estado: "hacer", accion: "Planificar antes de ejecutar"}, {estado: "hacer", accion: "Revisar con supervisor"}, {estado: "hacer", accion: "Ejecutar y guardar registro"}]}
+
+herramientas:
+["ian.exe ejecuta programas .ian", "ian-brain recuerda y recupera ensenanzas", "ian-teacher aprende de Codex Claude y archivos", "ian-api consulta sistemas externos", "ian-supervisor revisa calidad y seguridad", "ian-auto ejecuta objetivos", "ian-architect guia la evolucion"]

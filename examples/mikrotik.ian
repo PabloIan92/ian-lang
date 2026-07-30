@@ -1,0 +1,5 @@
+mikrotik script "/ip address print" como consulta
+decir $consulta
+
+mikrotik script "/interface print" como interfaces
+decir $interfaces

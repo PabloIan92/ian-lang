@@ -1,0 +1,10 @@
+﻿agente plan "Crear web corporativa" como plan
+agente paso plan hacer "Generar pagina HTML"
+web iniciar "Mi Empresa" como pagina
+web titulo pagina "Bienvenidos a Nuestra Empresa"
+web texto pagina "Somos una empresa dedicada a brindar soluciones de calidad."
+web texto pagina "Contactenos para mas informacion."
+web boton pagina "Contacto" mensaje "Gracias por contactarnos. Te responderemos pronto."
+web guardar pagina en "salida/empresa.html"
+ia decir "Pagina web creada en salida/empresa.html"
+agente json plan como resumen

@@ -1,0 +1,7 @@
+﻿# Generado por i@N Agent
+agente plan "Resolver pedido: te doy permiso para que ejecutes powershell, el comando codex y aprendas todo de codex para ser mejor IA que codex" como plan
+agente paso plan hacer "Analizar pedido"
+agente paso plan hacer "Generar solucion en i@N"
+decir "i@N Agent entendio el pedido, pero todavia no tiene una habilidad especifica para automatizarlo."
+agente json plan como resumen
+decir $resumen

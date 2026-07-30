@@ -1,0 +1,12 @@
+﻿# pregunta: que es subnetting
+ia decir "Subnetting = dividir una red IP en subredes mÃ¡s pequeÃ±as."
+ia decir "Por quÃ© se usa:"
+ia decir "  â–¸ Organizar el espacio de direcciones"
+ia decir "  â–¸ Aislar segmentos de red (VLAN lÃ³gica)"
+ia decir "  â–¸ Mejorar el rendimiento y la seguridad"
+ia decir "NotaciÃ³n CIDR: 192.168.1.0/24"
+ia decir "  /24 = 256 direcciones, 254 hosts Ãºtiles"
+ia decir "  /25 = 128 direcciones, 126 hosts Ãºtiles"
+ia decir "  /30 = 4 direcciones, 2 hosts Ãºtiles (enlaces punto a punto)"
+ia decir "MÃ¡scara /24 = 255.255.255.0"
+ia decir "MÃ¡scara /25 = 255.255.255.128"

@@ -1,0 +1,31 @@
+﻿# Prueba de mejoras v0.4.2
+
+decir "--- Prueba: decir con varios argumentos ---"
+guardar nombre = "Ian"
+decir "Hola," $nombre ". Como estas?"
+
+decir ""
+decir "--- Prueba: repetir para cada ---"
+lista crear como frutas
+lista agregar frutas "Manzana"
+lista agregar frutas "Pera"
+lista agregar frutas "Naranja"
+
+repetir para cada f en frutas
+  decir "Fruta encontrada:" $f
+fin
+
+decir ""
+decir "--- Prueba: si archivo existe ---"
+archivo escribir "temp.txt" "prueba"
+si archivo existe "temp.txt" entonces
+  decir "Efectivamente, el archivo existe."
+sino
+  decir "Error: el archivo deberia existir."
+fin
+
+si archivo existe "no_existe.txt" entonces
+  decir "Error: este archivo no deberia existir."
+sino
+  decir "Correcto: el archivo no existe."
+fin

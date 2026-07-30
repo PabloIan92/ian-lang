@@ -1,0 +1,17 @@
+﻿# pregunta: diagnostico completo de red
+agente plan "DiagnÃ³stico de red" como plan
+agente paso plan hacer "Verificar conectividad DNS y puertos"
+red dns "8.8.8.8" como dns_result
+red ping "8.8.8.8" como ping_result
+red puerto "google.com" 443 como https_result
+red puerto "google.com" 80 como http_result
+ia decir "=== DIAGNÃ“STICO DE RED ==="
+ia decir "DNS 8.8.8.8:"
+decir $dns_result
+ia decir "Ping 8.8.8.8:"
+decir $ping_result
+ia decir "HTTPS google.com:"
+decir $https_result
+ia decir "HTTP google.com:"
+decir $http_result
+agente json plan como resumen

@@ -1,0 +1,9 @@
+# Razonamiento inicial escrito en i@N
+agente plan "Ciclo de razonamiento i@N" como razonamiento
+agente paso razonamiento hacer "Escuchar el pedido completo"
+agente paso razonamiento hacer "Clasificar si es charla, accion, aprendizaje o consulta"
+agente paso razonamiento hacer "Si falta contexto, pedir aclaracion"
+agente paso razonamiento hacer "Planificar antes de ejecutar"
+agente paso razonamiento hacer "Revisar con supervisor"
+agente paso razonamiento hacer "Ejecutar y guardar registro"
+agente json razonamiento como razonamiento_json

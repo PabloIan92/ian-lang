@@ -1,0 +1,5 @@
+﻿guardar titulo = "Proyecto i@N"
+guardar cuerpo_json = "{\"title\":\"Proyecto i@N\",\"body\":\"Creado por ia local\",\"userId\":1}"
+api post "https://jsonplaceholder.typicode.com/posts" $cuerpo_json como respuesta
+ia decir "POST exitoso - servidor respondio:"
+decir $respuesta

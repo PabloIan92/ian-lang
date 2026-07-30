@@ -1,0 +1,3 @@
+﻿api delete "https://jsonplaceholder.typicode.com/posts/1" como respuesta
+ia decir "DELETE completado. Respuesta:"
+decir $respuesta

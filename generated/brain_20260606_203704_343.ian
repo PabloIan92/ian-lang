@@ -1,0 +1,6 @@
+﻿# i@N Brain v0.4.0
+web iniciar "Pagina i@N" como pagina
+web titulo pagina "Pagina generada por i@N"
+web texto pagina "Contenido generado automaticamente por i@N Brain."
+web guardar pagina en "salida/pagina-brain.html"
+ia decir "Pagina creada en salida/pagina-brain.html"

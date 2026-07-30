@@ -1,0 +1,12 @@
+﻿# pregunta: que es mikrotik
+ia decir "MikroTik es una empresa letona que fabrica routers, switches y APs."
+ia decir "Su sistema operativo se llama RouterOS."
+ia decir "Es muy popular en ISPs y redes empresariales por su relaciÃ³n costo-performance."
+ia decir "Comandos RouterOS mÃ¡s usados:"
+ia decir "  â–¸ /ip address print â€” ver IPs"
+ia decir "  â–¸ /interface print â€” ver interfaces"
+ia decir "  â–¸ /ip route print â€” ver rutas"
+ia decir "  â–¸ /ip firewall filter print â€” ver reglas de firewall"
+ia decir "  â–¸ /system resource print â€” ver CPU y RAM"
+ia decir "  â–¸ /log print â€” ver eventos del sistema"
+ia decir "En i@N: mikrotik script \"/ip address print\" como resultado"

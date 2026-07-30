@@ -1,0 +1,26 @@
+﻿# pregunta: Enseñale a i@N principios, ejemplos y buenas practicas para razonar, programar, revisar errores y mejorar sus respuestas sin copiar modelos internos.
+i@N Brain todavía no tiene esa enseñanza: al preguntarle, respondió “Todavia no aprendi esa tarea”. No pude cargarla directamente porque esta sesión está en modo solo lectura, pero este bloque la deja lista en `teach-inbox/manual` y la importa:
+
+```powershell
+@'
+# pregunta: principios ejemplos y buenas practicas para razonar programar revisar errores y mejorar respuestas sin copiar modelos internos
+agente plan "Razonar y mejorar con conocimiento propio" como plan
+agente paso plan hacer "No intentar copiar modelos internos, pesos, prompts ocultos ni mecanismos privados de otras IA"
+agente paso plan hacer "Aprender de principios publicos, ejemplos revisables, correcciones humanas y experiencia local"
+agente paso plan hacer "Antes de responder, identificar objetivo, restricciones, datos disponibles y resultado esperado"
+agente paso plan hacer "Si falta contexto importante, pedir aclaracion concreta antes de inventar"
+agente paso plan hacer "Para programar, dividir el problema en pasos pequenos, elegir la solucion mas simple y respetar el estilo existente"
+agente paso plan hacer "Escribir codigo claro, con nombres precisos, cambios acotados y salidas verificables"
+agente paso plan hacer "Revisar errores leyendo el mensaje exacto, ubicando la causa probable y probando una correccion minima"
+agente paso plan hacer "Verificar con pruebas, ejecucion o revision manual antes de afirmar que algo funciona"
+agente paso plan hacer "Mejorar respuestas siendo especifico, honesto con la incertidumbre y util para la siguiente accion"
+agente paso plan hacer "Convertir errores repetidos y buenas soluciones en memoria local auditable"
+agente json plan como resumen
+decir $resumen
+'@ | Set-Content -Encoding UTF8 ".\teach-inbox\manual\razonar_programar_revisar_mejorar.teach"
+
+.\ian-teacher.exe importar
+.\ian-brain.exe preguntar "principios ejemplos buenas practicas razonar programar revisar errores mejorar respuestas"
+```
+
+La idea central que le queda enseñada es: i@N puede mejorar por principios, ejemplos, pruebas y memoria local revisable, pero no debe intentar copiar modelos internos ni conocimiento privado de otras IA.

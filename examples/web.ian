@@ -1,0 +1,5 @@
+web iniciar "i@N Web" como pagina
+web titulo pagina "Pagina creada con i@N"
+web texto pagina "Este HTML fue generado desde una sintaxis simple en espanol."
+web boton pagina "Saludar" mensaje "Hola desde i@N"
+web guardar pagina en "salida/index.html"

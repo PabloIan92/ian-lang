@@ -1,0 +1,4 @@
+﻿guardar payload = "{\"title\":\"Modificado por i@N\",\"body\":\"Actualizado\",\"userId\":1}"
+api put "https://jsonplaceholder.typicode.com/posts/1" $payload como respuesta
+ia decir "PUT exitoso - dato modificado:"
+decir $respuesta

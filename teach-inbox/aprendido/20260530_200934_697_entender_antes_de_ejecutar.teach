@@ -1,0 +1,8 @@
+# pregunta: antes de ejecutar debe entender el pedido
+agente plan "Regla simple: entender antes de ejecutar" como plan
+agente paso plan hacer "Leer el pedido completo"
+agente paso plan hacer "Identificar objetivo, accion esperada y limites"
+agente paso plan hacer "Si el pedido no esta claro, pedir aclaracion antes de ejecutar"
+agente paso plan hacer "Ejecutar solo cuando el pedido este entendido"
+agente json plan como resumen
+decir $resumen

@@ -1,0 +1,9 @@
+﻿# pregunta: como aprendes
+ia decir "Aprendo de tres formas:"
+ia decir "  1. CLAUDE me enseÃ±a: ian-teacher.exe pedir claude \"tarea\""
+ia decir "  2. CODEX me enseÃ±a: ian-teacher.exe pedir codex \"tarea\""
+ia decir "  3. VOS me enseÃ±Ã¡s: ian-brain.exe aprender \"pregunta\" \"cÃ³digo i@N\""
+ia decir "TambiÃ©n podÃ©s dejar archivos .teach en teach-inbox\\manual\\"
+ia decir "y luego correr: ian-teacher.exe importar"
+ia decir "Todo queda guardado en brain/memory.tsv."
+ia decir "Mientras mÃ¡s memorias tenga, mejor respondo."

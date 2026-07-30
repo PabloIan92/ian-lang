@@ -1,0 +1,6 @@
+agente plan "Crear una pagina web, revisar red y pedir ayuda a Python si hace falta" como plan
+agente paso plan hacer "Generar HTML base"
+agente paso plan hacer "Comprobar puerto HTTP"
+agente paso plan hacer "Usar nexo externo para una tarea especializada"
+agente json plan como salida
+decir $salida

@@ -1,0 +1,10 @@
+# i@N escrito en i@N: nucleo conceptual
+guardar ian_nombre = "i@N"
+guardar ian_version_self = "0.1-self"
+guardar ian_objetivo = "ser un lenguaje, una memoria y una inteligencia local autohospedada"
+
+agente plan "Definir nucleo self-hosted de i@N" como nucleo_plan
+agente paso nucleo_plan hecho "El motor actual ejecuta instrucciones i@N"
+agente paso nucleo_plan hacer "Mover cada vez mas comportamiento desde C# hacia archivos .ian"
+agente paso nucleo_plan hacer "Mantener cada parte auditable y editable"
+agente json nucleo_plan como nucleo_json

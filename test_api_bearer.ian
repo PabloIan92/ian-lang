@@ -1,0 +1,4 @@
+﻿guardar mi_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ejemplo"
+api get "https://jsonplaceholder.typicode.com/posts/5" bearer $mi_token como respuesta
+ia decir "GET con Bearer Token:"
+decir $respuesta

@@ -1,0 +1,3 @@
+﻿# Generado por i@N Brain
+red puerto "example.com" 443 como estado_puerto
+decir $estado_puerto

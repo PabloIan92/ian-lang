@@ -1,0 +1,24 @@
+# Operaciones matemáticas completas
+guardar a = 100
+guardar b = 7
+
+sumar $a $b como suma
+restar $a $b como resta
+multiplicar $a $b como producto
+dividir $a $b como cociente
+modulo $a $b como resto
+
+decir $suma
+decir $resta
+decir $producto
+decir $cociente
+decir $resto
+
+# Contador con mientras
+guardar contador = 1
+guardar acumulado = 0
+mientras $contador menor o igual que 10
+  sumar $acumulado $contador como acumulado
+  incrementar contador
+fin
+decir $acumulado

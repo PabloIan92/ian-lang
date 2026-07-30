@@ -1,0 +1,8 @@
+﻿# pregunta: consultar dns de un dominio
+agente plan "Consulta DNS" como plan
+agente paso plan hacer "Resolver nombre de dominio"
+red dns "example.com" como ips
+ia decir "Direcciones IP para example.com:"
+decir $ips
+agente paso plan hecho "DNS resuelto"
+agente json plan como resumen

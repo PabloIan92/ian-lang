@@ -1,0 +1,9 @@
+# pregunta: mejorar i@n para ser mas capaz
+agente plan "Mejorar i@N por aprendizaje local" como plan
+agente paso plan hacer "Detectar que tarea no sabe resolver"
+agente paso plan hacer "Buscar una enseñanza en memoria"
+agente paso plan hacer "Si no hay enseñanza, pedir ayuda a un profesor externo autorizado"
+agente paso plan hacer "Importar la enseñanza como memoria propia"
+agente paso plan hacer "Volver a intentar con el nuevo conocimiento"
+agente json plan como resumen
+decir $resumen

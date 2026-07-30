@@ -1,0 +1,9 @@
+﻿decir "Test de regresion"
+guardar nombre = "Gabriel"
+guardar numero = 42
+unir "Hola " $nombre "!" como saludo
+decir $saludo
+decir $numero
+si $numero mayor que 10 entonces
+  ia decir "El numero es mayor que 10"
+fin

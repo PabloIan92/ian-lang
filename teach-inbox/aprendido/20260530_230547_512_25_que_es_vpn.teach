@@ -1,0 +1,10 @@
+﻿# pregunta: que es una vpn
+ia decir "VPN = Virtual Private Network (Red Privada Virtual)."
+ia decir "Crea un tÃºnel cifrado entre tu dispositivo e internet."
+ia decir "Usos principales:"
+ia decir "  â–¸ Acceder a la red de trabajo desde cualquier lugar"
+ia decir "  â–¸ Proteger la conexiÃ³n en WiFi pÃºblicas"
+ia decir "  â–¸ Ocultar la IP real"
+ia decir "  â–¸ Conectar oficinas remotas (Site-to-Site)"
+ia decir "Protocolos comunes: OpenVPN, WireGuard, IPsec, L2TP"
+ia decir "MikroTik soporta: L2TP, SSTP, OpenVPN, WireGuard"

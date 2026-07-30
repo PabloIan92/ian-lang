@@ -1,0 +1,15 @@
+﻿funcion saludar nombre
+  unir "Hola " $nombre como resultado
+fin
+
+llamar saludar "Ian" como mi_saludo
+decir $mi_saludo
+
+funcion calcular_area radio
+  multiplicar $radio $radio como r2
+  multiplicar 3.14159 $r2 como resultado
+fin
+
+llamar calcular_area 10 como area
+unir "El area es: " $area como mensaje
+decir $mensaje

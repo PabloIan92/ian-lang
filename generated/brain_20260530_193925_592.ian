@@ -1,0 +1,10 @@
+﻿# Generado por i@N Brain
+agente plan "Resolver con cerebro local: crear una web simple" como plan
+agente paso plan hacer "Crear pagina web"
+web iniciar "Pagina i@N Brain" como pagina
+web titulo pagina "Pagina creada por i@N Brain"
+web texto pagina "Este resultado fue decidido por el cerebro local de i@N."
+web boton pagina "Abrir" mensaje "Pagina generada con i@N Brain"
+web guardar pagina en "salida/brain-web.html"
+agente json plan como resumen
+decir $resumen

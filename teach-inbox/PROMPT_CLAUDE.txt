@@ -1,0 +1,23 @@
+﻿Quiero que le enseñes a i@N Brain.
+i@N es un lenguaje local con estos comandos principales:
+- decir "texto"
+- guardar nombre = "valor"
+- red dns "dominio" como resultado
+- red puerto "host" 80 como resultado
+- web iniciar "Titulo" como pagina
+- web titulo pagina "Titulo"
+- web texto pagina "Texto"
+- web boton pagina "Etiqueta" mensaje "Mensaje"
+- web guardar pagina en "salida/index.html"
+- mikrotik script "/interface print" como resultado
+- agente plan "Objetivo" como plan
+- agente paso plan hacer "Accion"
+- agente json plan como resumen
+
+Respondeme con un archivo de enseñanza en este formato exacto:
+
+# pregunta: ESCRIBIR ACA EL PEDIDO QUE DEBE APRENDER i@N
+CODIGO i@N ACA
+
+No expliques nada fuera del codigo. No uses Markdown. No uses Python.
+Profesor sugerido: Claude

@@ -1,0 +1,8 @@
+﻿# pregunta: aprendizaje diario sobre BM Supermercados
+agente plan "Aprender algo nuevo cada dia" como plan
+agente paso plan hacer "Consultar fuente externa"
+agente paso plan hacer "Guardar resumen en memoria local"
+decir "Aprendizaje diario: BM Supermercados"
+decir "BM Supermercados, o simplemente BM, es el nombre por el que se conoce la línea de supermercados española perteneciente al grupo empresarial Uvesco, fundado en 1993 por la fusión de la cántabra VES y la vasca Unialco. BM Supermercados es la enseña más conocida de la compañía, quienes también operan bajo las marcas comerciales Super Amara y BM Shop. La sede se encuentra en la localidad fronteriza de Irún, provincia de Guipúzcoa."
+agente json plan como resumen
+decir $resumen

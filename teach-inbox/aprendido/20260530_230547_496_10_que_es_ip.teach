@@ -1,0 +1,9 @@
+﻿# pregunta: que es una ip
+ia decir "IP = Internet Protocol. Es la direcciÃ³n Ãºnica de cada dispositivo en la red."
+ia decir "IPv4 tiene formato: 4 nÃºmeros del 0 al 255. Ej: 192.168.1.100"
+ia decir "IPv6 usa hexadecimal. Ej: 2001:db8:85a3::8a2e:370:7334"
+ia decir "Rangos privados (no van a internet):"
+ia decir "  â–¸ 10.0.0.0/8"
+ia decir "  â–¸ 172.16.0.0/12"
+ia decir "  â–¸ 192.168.0.0/16"
+ia decir "La IP 127.0.0.1 siempre es 'yo mismo' (loopback)."

@@ -1,0 +1,15 @@
+﻿# pregunta: crear lista de tareas pendientes
+agente plan "Lista de tareas" como plan
+agente paso plan hacer "Crear lista"
+lista crear como tareas
+lista agregar tareas "Revisar conectividad de red"
+lista agregar tareas "Actualizar firmware Mikrotik"
+lista agregar tareas "Hacer backup de configuraciÃ³n"
+lista agregar tareas "Verificar logs del sistema"
+lista agregar tareas "Documentar cambios realizados"
+lista tamanno tareas como cantidad
+ia decir "=== TAREAS PENDIENTES ==="
+decir $cantidad
+lista json tareas como json_tareas
+decir $json_tareas
+agente json plan como resumen

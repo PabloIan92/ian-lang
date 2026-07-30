@@ -1,0 +1,24 @@
+# Trabajo con listas
+lista crear como lenguajes
+lista agregar lenguajes "i@N"
+lista agregar lenguajes "Python"
+lista agregar lenguajes "JavaScript"
+lista agregar lenguajes "C#"
+
+lista tamanno lenguajes como cantidad
+decir $cantidad
+
+lista obtener lenguajes 0 como primero
+decir $primero
+
+lista json lenguajes como json
+decir $json
+
+# Lista de tareas pendientes
+lista crear como tareas
+lista agregar tareas "Revisar red"
+lista agregar tareas "Generar reporte"
+lista agregar tareas "Notificar cliente"
+
+lista tamanno tareas como total_tareas
+decir $total_tareas

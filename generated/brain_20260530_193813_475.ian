@@ -1,0 +1,9 @@
+﻿agente plan "Crear web de empresa con enseñanza externa" como plan
+agente paso plan hacer "Crear pagina principal"
+web iniciar "Empresa enseñada" como pagina
+web titulo pagina "Empresa enseñada por Claude"
+web texto pagina "Esta estructura fue aprendida por i@N Brain desde la bandeja Claude."
+web boton pagina "Contacto" mensaje "Gracias por visitar la empresa"
+web guardar pagina en "salida/empresa-claude.html"
+agente json plan como resumen
+decir $resumen

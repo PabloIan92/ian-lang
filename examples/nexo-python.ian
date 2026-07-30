@@ -1,0 +1,3 @@
+nexo mayusculas = proceso "python ../tools/upper_bridge.py"
+llamar mayusculas con "hola desde i@n conectado con python" como respuesta
+decir $respuesta

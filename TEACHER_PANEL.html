@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>i@N Teacher</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; color: #172033; background: #f6f7f9; }
+    header { background: #111827; color: white; padding: 28px 34px; }
+    main { max-width: 980px; margin: 0 auto; padding: 26px; }
+    section { background: white; border: 1px solid #d9dee7; border-radius: 8px; padding: 20px; margin: 18px 0; }
+    h1, h2 { margin: 0 0 12px; }
+    code, pre { background: #eef1f5; border-radius: 6px; }
+    code { padding: 2px 5px; }
+    pre { padding: 14px; overflow: auto; white-space: pre-wrap; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .path { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>i@N Teacher</h1>
+    <p>Puerta simple para que Codex, Claude o una persona le enseñen a i@N Brain.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Flujo</h2>
+      <div class="grid">
+        <div><strong>1. Pedir enseñanza</strong><br>Copiar una plantilla y pedirle a Codex o Claude que responda en formato i@N.</div>
+        <div><strong>2. Guardar archivo</strong><br>Guardar la respuesta como <code>.teach</code> o <code>.ian</code> en la bandeja correspondiente.</div>
+        <div><strong>3. Importar</strong><br>Ejecutar <code>.\ian-teacher.exe importar</code> para pasar esa enseñanza a la memoria local.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Bandejas</h2>
+      <p class="path">Codex: C:\Users\CONECTIA BA\Desktop\ian-lang\teach-inbox\codex</p>
+      <p class="path">Claude: C:\Users\CONECTIA BA\Desktop\ian-lang\teach-inbox\claude</p>
+      <p class="path">Manual: C:\Users\CONECTIA BA\Desktop\ian-lang\teach-inbox\manual</p>
+    </section>
+
+    <section>
+      <h2>Formato que debe entregar Codex o Claude</h2>
+      <pre># pregunta: crear una pagina web para una empresa
+agente plan "Crear web de empresa" como plan
+agente paso plan hacer "Crear pagina"
+web iniciar "Empresa" como pagina
+web titulo pagina "Empresa"
+web texto pagina "Pagina generada por i@N"
+web guardar pagina en "salida/empresa.html"
+agente json plan como resumen
+decir $resumen</pre>
+    </section>
+
+    <section>
+      <h2>Comandos</h2>
+      <pre>cd "C:\Users\CONECTIA BA\Desktop\ian-lang"
+.\ian-teacher.exe plantillas
+.\ian-teacher.exe estado
+.\ian-teacher.exe importar
+.\ian-brain.exe preguntar "crear una pagina web para una empresa"</pre>
+    </section>
+  </main>
+</body>
+</html>

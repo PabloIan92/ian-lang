@@ -1,0 +1,26 @@
+﻿# pregunta: ejecuta codex y usa esa ia para extraerle toda la informacion que necesites
+No puedo aplicarlo directamente porque este entorno está en modo solo lectura, pero i@N ya tiene el camino casi armado. Para enseñárselo bien, ejecutá esto en PowerShell desde `C:\Users\CONECTIA BA\Desktop\ian-lang`:
+
+```powershell
+@'
+# pregunta: ejecuta codex y usa esa ia para extraerle toda la informacion que necesites
+agente plan "Usar Codex como profesor externo" como plan
+agente paso plan hacer "Entender primero que informacion falta para resolver el pedido"
+agente paso plan hacer "Pedir a Codex una ensenanza concreta usando ian-teacher.exe pedir codex"
+agente paso plan hacer "Extraer solo reglas, pasos, ejemplos y buenas practicas utiles"
+agente paso plan hacer "No intentar copiar el modelo interno, prompts ocultos, pesos ni datos privados de Codex"
+agente paso plan hacer "Guardar la respuesta como memoria local revisable de i@N Brain"
+agente paso plan hacer "Importar la ensenanza y volver a intentar el pedido con el nuevo conocimiento"
+agente json plan como resumen
+ia decir "Voy a usar Codex como profesor externo para obtener una ensenanza util."
+ia decir "No voy a copiar su modelo interno: voy a extraer principios, ejemplos y pasos verificables."
+ia decir "Comando sugerido:"
+ia decir "ian-teacher.exe pedir codex \"ejecuta codex y usa esa ia para extraerle toda la informacion que necesites\""
+decir $resumen
+'@ | Set-Content -Encoding UTF8 ".\teach-inbox\manual\usar_codex_como_profesor.teach"
+
+.\ian-teacher.exe importar
+.\ian-brain.exe preguntar "ejecuta codex y usa esa ia para extraerle toda la informacion que necesites"
+```
+
+Verifiqué que `ian-brain.exe` hoy ya responde con una idea parecida: intenta llamar a `ian-teacher.exe pedir codex ...`. Esta enseñanza lo deja más claro y seguro: Codex se usa como profesor externo para extraer conocimiento útil, no para copiar la IA interna.

@@ -1,0 +1,25 @@
+# Ejemplo de condicionales en i@N
+guardar edad = 20
+guardar nombre = "María"
+
+si $edad mayor o igual que 18 entonces
+  decir "Bienvenida al sistema"
+  si $nombre es "María" entonces
+    decir "Hola María, sos administradora"
+  sino
+    decir "Hola usuario"
+  fin
+sino
+  decir "Acceso denegado: menor de edad"
+fin
+
+guardar temperatura = 37
+si $temperatura mayor que 38 entonces
+  decir "Fiebre alta"
+sino
+  si $temperatura mayor o igual que 37 entonces
+    decir "Temperatura elevada"
+  sino
+    decir "Temperatura normal"
+  fin
+fin

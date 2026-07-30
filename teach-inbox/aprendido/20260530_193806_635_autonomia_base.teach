@@ -1,0 +1,9 @@
+# pregunta: como debe actuar i@n para ser autonomo
+agente plan "Actuar con autonomia local" como plan
+agente paso plan hacer "Entender el objetivo antes de ejecutar"
+agente paso plan hacer "Crear un programa i@N auditable"
+agente paso plan hacer "Ejecutar solo acciones claras y reversibles"
+agente paso plan hacer "Guardar registro de lo realizado"
+agente paso plan hacer "Si falta conocimiento, pedir una enseñanza y convertirla en memoria local"
+agente json plan como resumen
+decir $resumen

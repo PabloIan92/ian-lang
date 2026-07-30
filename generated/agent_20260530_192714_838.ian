@@ -1,0 +1,7 @@
+﻿# Generado por i@N Agent
+agente plan "Resolver pedido: prepara comando mikrotik para ver interfaces" como plan
+agente paso plan hacer "Preparar comando Mikrotik RouterOS"
+mikrotik script "/interface print" como consulta_mikrotik
+decir $consulta_mikrotik
+agente json plan como resumen
+decir $resumen

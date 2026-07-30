@@ -1,0 +1,12 @@
+﻿# pregunta: hacer backup de configuracion mikrotik
+agente plan "Backup Mikrotik" como plan
+agente paso plan hacer "Generar script de backup"
+mikrotik script "/system backup save name=backup_$(date)" como backup_cmd
+mikrotik script "/export file=config_export" como export_cmd
+ia decir "=== COMANDOS PARA BACKUP MIKROTIK ==="
+ia decir "Backup binario (restauraciÃ³n completa):"
+decir $backup_cmd
+ia decir "Export de configuraciÃ³n (texto legible):"
+decir $export_cmd
+ia decir "Estos comandos deben ejecutarse en la terminal RouterOS."
+agente json plan como resumen

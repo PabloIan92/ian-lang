@@ -1,0 +1,11 @@
+# Primer programa en i@N
+guardar nombre = "redes y web"
+decir "Hola desde i@N"
+decir $nombre
+
+sumar 12 30 como total
+decir $total
+
+repetir 2 veces
+  decir "i@N puede automatizar tareas simples"
+fin

@@ -1,0 +1,7 @@
+﻿# Generado por i@N Brain
+agente plan "Resolver con cerebro local: prepara comando mikrotik" como plan
+agente paso plan hacer "Preparar comando RouterOS"
+mikrotik script "/interface print" como salida_mikrotik
+decir $salida_mikrotik
+agente json plan como resumen
+decir $resumen

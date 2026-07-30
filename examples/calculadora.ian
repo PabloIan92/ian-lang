@@ -1,0 +1,25 @@
+# Calculadora interactiva de jornales
+guardar jornal_dia = 15000
+guardar dias_trabajados = 22
+guardar adelantos = 45000
+
+multiplicar $jornal_dia $dias_trabajados como bruto
+restar $bruto $adelantos como neto
+
+decir "=== Liquidación ==="
+unir "Jornal/día: $" $jornal_dia como linea1
+decir $linea1
+unir "Días trabajados: " $dias_trabajados como linea2
+decir $linea2
+unir "Bruto: $" $bruto como linea3
+decir $linea3
+unir "Adelantos: $" $adelantos como linea4
+decir $linea4
+unir "Neto a pagar: $" $neto como linea5
+decir $linea5
+
+si $neto mayor que 0 entonces
+  decir "Estado: Tiene saldo a cobrar"
+sino
+  decir "Estado: Sin saldo pendiente"
+fin

@@ -1,0 +1,13 @@
+﻿# Generado por i@N Agent
+agente plan "Resolver pedido: crea una pagina web para mi empresa y revisa el puerto http de example.com" como plan
+agente paso plan hacer "Crear estructura web"
+web iniciar "mi empresa" como pagina
+web titulo pagina "mi empresa"
+web texto pagina "Esta pagina fue generada por i@N Agent desde un pedido en lenguaje natural."
+web boton pagina "Probar" mensaje "i@N Agent genero esta pagina"
+web guardar pagina en "salida/agent-web.html"
+agente paso plan hacer "Comprobar puerto de red"
+red puerto "example.com" 80 como puerto_abierto
+decir $puerto_abierto
+agente json plan como resumen
+decir $resumen

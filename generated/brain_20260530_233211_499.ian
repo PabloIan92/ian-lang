@@ -1,0 +1,7 @@
+﻿# Generado por i@N Brain
+agente plan "Resolver con cerebro local: hola" como plan
+ia decir "¡Hola! Soy i@N. ¿En qué te puedo ayudar hoy?"
+ia decir "Podés pedirme: crear webs, revisar redes, configurar Mikrotik, hacer cálculos..."
+ia decir "O simplemente preguntame algo técnico."
+agente json plan como resumen
+decir $resumen

@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura planificador
+agente plan "Construir modulo planificador" como plan
+agente paso plan hacer "Objetivo: convertir objetivos en pasos"
+agente paso plan hacer "Version superior: crear planes verificables antes de actuar"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

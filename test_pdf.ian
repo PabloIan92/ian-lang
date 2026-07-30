@@ -1,0 +1,16 @@
+web iniciar "Presupuesto de Obra" como pagina
+web titulo pagina "Presupuesto SA6373"
+web subtitulo pagina "AC Construcciones — Junio 2026"
+web texto pagina "Presupuesto detallado para obra gris en dos plantas."
+web tabla pagina "Rubro,Cantidad,Precio Unit.,Total"
+web fila pagina "Excavacion y fundacion,1 global,$185000,$185000"
+web fila pagina "Estructura de hormigon,180 m2,$8500,$1530000"
+web fila pagina "Mamposteria de ladrillo,320 m2,$3200,$1024000"
+web fila pagina "Cubierta losa,90 m2,$12000,$1080000"
+web fila pagina "Instalacion electrica,1 global,$280000,$280000"
+web fila pagina "Instalacion sanitaria,1 global,$195000,$195000"
+web tabla-fin pagina
+web subtitulo pagina "Total: $4.294.000"
+web texto pagina "Valores en pesos argentinos. Validez: 30 dias desde emision."
+web enlace pagina "pl@redlimon.com.ar" "mailto:pl@redlimon.com.ar"
+web guardar pagina en "salida/presupuesto.pdf"

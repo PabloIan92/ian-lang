@@ -1,0 +1,11 @@
+﻿# pregunta: hacer ping a un host
+agente plan "Verificar conectividad" como plan
+agente paso plan hacer "Ping al host"
+red ping "8.8.8.8" como responde
+ia decir "Resultado del ping a 8.8.8.8:"
+si $responde es verdadero entonces
+  ia decir "Host alcanzable âœ“"
+sino
+  ia decir "Host NO alcanzable âœ—"
+fin
+agente json plan como resumen

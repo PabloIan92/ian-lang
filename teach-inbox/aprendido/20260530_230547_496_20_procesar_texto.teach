@@ -1,0 +1,17 @@
+﻿# pregunta: procesar y analizar texto
+agente plan "AnÃ¡lisis de texto" como plan
+guardar texto = "AutomatizaciÃ³n con i@N en espaÃ±ol"
+texto longitud $texto como largo
+texto mayusculas $texto como upper
+texto minusculas $texto como lower
+texto contiene $texto "i@N" como tiene_ian
+ia decir "=== ANÃLISIS DE TEXTO ==="
+ia decir "Texto original:"
+decir $texto
+ia decir "Caracteres:"
+decir $largo
+ia decir "En mayÃºsculas:"
+decir $upper
+ia decir "Contiene 'i@N':"
+decir $tiene_ian
+agente json plan como resumen

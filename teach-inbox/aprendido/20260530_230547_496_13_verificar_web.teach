@@ -1,0 +1,19 @@
+﻿# pregunta: verificar si un sitio web esta online
+agente plan "Verificar disponibilidad web" como plan
+agente paso plan hacer "Comprobar puerto HTTP y HTTPS"
+red puerto "example.com" 80 como http_ok
+red puerto "example.com" 443 como https_ok
+ia decir "Resultado de verificaciÃ³n web:"
+decir $http_ok
+decir $https_ok
+si $http_ok es verdadero entonces
+  ia decir "Puerto 80 (HTTP): ABIERTO âœ“"
+sino
+  ia decir "Puerto 80 (HTTP): CERRADO âœ—"
+fin
+si $https_ok es verdadero entonces
+  ia decir "Puerto 443 (HTTPS): ABIERTO âœ“"
+sino
+  ia decir "Puerto 443 (HTTPS): CERRADO âœ—"
+fin
+agente json plan como resumen

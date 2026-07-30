@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura herramientas
+agente plan "Construir modulo herramientas" como plan
+agente paso plan hacer "Objetivo: ejecutar motor, API, red, web, mikrotik y nexos"
+agente paso plan hacer "Version superior: elegir herramienta por necesidad y explicar resultado"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

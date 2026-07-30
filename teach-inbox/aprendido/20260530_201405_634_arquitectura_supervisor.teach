@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura supervisor
+agente plan "Construir modulo supervisor" como plan
+agente paso plan hacer "Objetivo: criticar calidad y seguridad"
+agente paso plan hacer "Version superior: bloquear o mejorar acciones flojas antes de ejecutarlas"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen

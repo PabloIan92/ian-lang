@@ -1,0 +1,14 @@
+﻿# pregunta: configurar firewall mikrotik
+ia decir "Reglas bÃ¡sicas de Firewall MikroTik:"
+ia decir ""
+ia decir "REGLAS RECOMENDADAS (input chain - proteger el router):"
+ia decir "  /ip firewall filter add chain=input connection-state=established,related action=accept"
+ia decir "  /ip firewall filter add chain=input connection-state=invalid action=drop"
+ia decir "  /ip firewall filter add chain=input in-interface=ether1 action=drop comment=\"Bloquear WAN\""
+ia decir ""
+ia decir "NAT para salida a internet:"
+ia decir "  /ip firewall nat add chain=srcnat out-interface=ether1 action=masquerade"
+ia decir ""
+ia decir "Para ver reglas actuales:"
+mikrotik script "/ip firewall filter print" como reglas
+decir $reglas

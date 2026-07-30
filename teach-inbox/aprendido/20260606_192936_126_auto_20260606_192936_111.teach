@@ -1,0 +1,8 @@
+﻿# pregunta: ejecuta codex y usa esa ia para extraerle toda la informacion que necesites
+Listo. Le ense├▒├® a i@N Brain el pedido:
+
+`ejecuta codex y usa esa ia para extraerle toda la informacion que necesites`
+
+Tambi├®n limpi├® una memoria anterior que estaba mal guardada y hac├¡a que Brain respondiera con Markdown en vez de c├│digo i@N.
+
+Verificaci├│n: ahora `ian-brain.exe preguntar ...` devuelve un plan i@N limpio para usar Codex como profesor externo, extraer solo reglas/pasos/ejemplos ├║tiles, y no intentar copiar prompts ocultos, pesos ni informaci├│n interna de Codex.

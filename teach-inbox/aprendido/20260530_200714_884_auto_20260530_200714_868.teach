@@ -1,0 +1,14 @@
+﻿# pregunta: enseñale a i@n una regla simple: antes de ejecutar debe entender el pedido
+No pude escribirlo directamente porque el workspace está en modo solo lectura, pero este es el aprendizaje exacto para cargar en i@N Brain:
+
+```powershell
+.\ian-brain.exe aprender "antes de ejecutar debe entender el pedido" "agente plan `"Regla simple: entender antes de ejecutar`" como plan\r\nagente paso plan hacer `"Leer el pedido completo`"\r\nagente paso plan hacer `"Identificar objetivo, accion esperada y limites`"\r\nagente paso plan hacer `"Si el pedido no esta claro, pedir aclaracion antes de ejecutar`"\r\nagente paso plan hacer `"Ejecutar solo cuando el pedido este entendido`"\r\nagente json plan como resumen\r\ndecir $resumen"
+```
+
+Después verificá con:
+
+```powershell
+.\ian-brain.exe preguntar "antes de ejecutar debe entender el pedido"
+```
+
+Hoy esa consulta todavía no matchea la memoria existente; devuelve “Todavia no aprendi esa tarea”. Esa línea nueva en [memory.tsv](</c/Users/CONECTIA BA/Desktop/ian-lang/brain/memory.tsv>) lo deja enseñado de forma directa.

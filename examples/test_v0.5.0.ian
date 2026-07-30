@@ -1,0 +1,20 @@
+﻿# Prueba de Inteligencia en Bucle Cerrado v0.5.0
+
+ia limpiar
+ia decir "Iniciando reflexion autonoma..."
+ia pensar
+
+# 1. Consultar el cerebro directamente desde el script
+ia consultar "quien sos" como respuesta_brain
+ia decir "Mi cerebro dice: " $respuesta_brain
+
+# 2. Reflexionar sobre un pedido complejo
+ia decir "Reflexionando sobre como mejorar la red..."
+ia reflexionar "escanear red local y generar reporte" como plan_autonomo
+ia decir "Plan generado internamente:"
+decir $plan_autonomo
+
+# 3. Depuracion de estado
+depurar
+
+ia decir "Prueba finalizada. i@N ahora puede consultarse a si mismo."

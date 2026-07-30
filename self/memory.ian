@@ -1,0 +1,7 @@
+# Memoria propia escrita en i@N
+lista crear como memoria_capacidades
+lista agregar memoria_capacidades "recordar ensenanzas locales"
+lista agregar memoria_capacidades "importar profesores externos como conocimiento propio"
+lista agregar memoria_capacidades "consultar APIs cuando falte informacion"
+lista agregar memoria_capacidades "registrar aprendizaje diario"
+lista json memoria_capacidades como memoria_json

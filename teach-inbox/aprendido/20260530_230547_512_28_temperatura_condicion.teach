@@ -1,0 +1,16 @@
+﻿# pregunta: verificar valor con condicion
+agente plan "VerificaciÃ³n condicional" como plan
+guardar temperatura = 38
+ia decir "=== VERIFICADOR DE TEMPERATURA ==="
+ia decir "Temperatura actual:"
+decir $temperatura
+si $temperatura mayor que 40 entonces
+  ia decir "ALERTA: Temperatura crÃ­tica. Riesgo de daÃ±o al equipo."
+sino
+  si $temperatura mayor que 35 entonces
+    ia decir "ADVERTENCIA: Temperatura elevada. Revisar ventilaciÃ³n."
+  sino
+    ia decir "OK: Temperatura normal."
+  fin
+fin
+agente json plan como resumen

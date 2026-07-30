@@ -1,0 +1,8 @@
+﻿# pregunta: arquitectura memoria
+agente plan "Construir modulo memoria" como plan
+agente paso plan hacer "Objetivo: recordar enseñanzas locales"
+agente paso plan hacer "Version superior: usar memoria por relevancia, fecha, fuente y calidad"
+agente paso plan hacer "Integrar con memoria, supervisor y logs"
+agente paso plan hacer "Medir si mejora la respuesta antes de ejecutarla"
+agente json plan como resumen
+decir $resumen
