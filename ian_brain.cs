@@ -715,8 +715,9 @@ class IanBrain
         float maxHit = entries.Count > 0 ? entries.Max(e => (float)e.HitCount) : 1;
         if (maxHit < 1) maxHit = 1;
 
-        foreach (var e in entries)
+        for (int i = 0; i < entries.Count; i++)
         {
+            MemoryEntry e = entries[i];
             string[] memoryWords = Words(e.Prompt);
             int matched = Score(promptWords, memoryWords);
             float coverage = promptWords.Length > 0 ? (float)matched / promptWords.Length : 0;
@@ -735,6 +736,7 @@ class IanBrain
                 best = new MemoryMatch(e.Code, weighted);
                 e.HitCount++;
                 e.LastAccess = DateTime.Now;
+                entries[i] = e;
             }
         }
         if (!string.IsNullOrEmpty(best.Program))

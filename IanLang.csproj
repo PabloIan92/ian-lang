@@ -6,7 +6,11 @@
     <RootNamespace>IanLang</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Description>i@N Language - Unified Runtime</Description>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- Backups antiguos: quedan en disco pero no compilan -->
+    <Compile Remove="ian_brain_v022.cs" />
+  </ItemGroup>
 </Project>
