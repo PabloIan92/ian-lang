@@ -1,5 +1,6 @@
 # Compiled output
 *.exe
+__pycache__/
 bin/
 obj/
 *.suo

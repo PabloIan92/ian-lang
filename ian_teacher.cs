@@ -12,6 +12,7 @@ class IanTeacher
     static readonly string CodexDir = Path.Combine(Inbox, "codex");
     static readonly string ClaudeDir = Path.Combine(Inbox, "claude");
     static readonly string DeepSeekDir = Path.Combine(Inbox, "deepseek");
+    static readonly string LocalDir = Path.Combine(Inbox, "local");
     static readonly string ManualDir = Path.Combine(Inbox, "manual");
     static readonly string LearnedDir = Path.Combine(Inbox, "aprendido");
     static readonly string BrainDir = Path.Combine(Home, "brain");
@@ -61,6 +62,7 @@ class IanTeacher
         Console.WriteLine("  ian.exe teacher pedir claude \"pedido\"");
         Console.WriteLine("  ian.exe teacher pedir codex \"pedido\"");
         Console.WriteLine("  ian.exe teacher pedir deepseek \"pedido\"");
+        Console.WriteLine("  ian.exe teacher pedir local \"pedido\"");
         Console.WriteLine("  ian.exe teacher vigilar");
         Console.WriteLine("  ian.exe teacher recibir claude \"pedido\" \"archivo.ian\"");
         Console.WriteLine("  ian.exe teacher recibir codex \"pedido\" \"archivo.ian\"");
@@ -72,6 +74,7 @@ class IanTeacher
         Directory.CreateDirectory(CodexDir);
         Directory.CreateDirectory(ClaudeDir);
         Directory.CreateDirectory(DeepSeekDir);
+        Directory.CreateDirectory(LocalDir);
         Directory.CreateDirectory(ManualDir);
         Directory.CreateDirectory(LearnedDir);
         Directory.CreateDirectory(BrainDir);
@@ -103,6 +106,7 @@ class IanTeacher
         count += ImportDir(CodexDir, "codex");
         count += ImportDir(ClaudeDir, "claude");
         count += ImportDir(DeepSeekDir, "deepseek");
+        count += ImportDir(LocalDir, "local");
         count += ImportDir(ManualDir, "manual");
         Console.WriteLine("Ense??anzas importadas: " + count);
         return 0;
@@ -110,10 +114,10 @@ class IanTeacher
 
     static int AskTeacher(string[] args)
     {
-        if (args.Length < 3) throw new Exception("Uso: pedir claude|codex \"pedido\"");
+        if (args.Length < 3) throw new Exception("Uso: pedir claude|codex|deepseek|local \"pedido\"");
         string teacher = args[1].ToLowerInvariant();
         string request = string.Join(" ", Slice(args, 2));
-        if (teacher != "claude" && teacher != "codex" && teacher != "deepseek") throw new Exception("Profesor no soportado: " + teacher);
+        if (teacher != "claude" && teacher != "codex" && teacher != "deepseek" && teacher != "local") throw new Exception("Profesor no soportado: " + teacher);
 
         string prompt = BuildTeachingPrompt(request, teacher);
         Console.WriteLine("Pidiendo ense??anza a " + teacher + "...");
@@ -124,7 +128,7 @@ class IanTeacher
         if (!code.TrimStart().StartsWith("# pregunta:", StringComparison.OrdinalIgnoreCase))
             code = "# pregunta: " + request + Environment.NewLine + code.Trim();
 
-        string dir = teacher == "claude" ? ClaudeDir : (teacher == "deepseek" ? DeepSeekDir : CodexDir);
+        string dir = teacher == "claude" ? ClaudeDir : (teacher == "deepseek" ? DeepSeekDir : (teacher == "local" ? LocalDir : CodexDir));
         string file = Path.Combine(dir, "auto_" + DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + ".teach");
         File.WriteAllText(file, code, Encoding.UTF8);
         Console.WriteLine("Ense??anza guardada: " + file);
@@ -144,6 +148,7 @@ class IanTeacher
             count += ImportDir(CodexDir, "codex");
             count += ImportDir(ClaudeDir, "claude");
             count += ImportDir(DeepSeekDir, "deepseek");
+            count += ImportDir(LocalDir, "local");
             count += ImportDir(ManualDir, "manual");
             if (count > 0) Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " - ense??anzas importadas: " + count);
             System.Threading.Thread.Sleep(seconds * 1000);
@@ -243,6 +248,10 @@ class IanTeacher
         else if (teacher == "deepseek")
         {
             command = "deepseek " + QuoteArg(prompt);
+        }
+        else if (teacher == "local")
+        {
+            command = "local " + QuoteArg(prompt);
         }
         else
         {

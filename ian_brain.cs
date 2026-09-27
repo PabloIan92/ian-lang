@@ -213,6 +213,7 @@ class IanBrain
         Console.WriteLine("  2. Patrones conocidos (identidad, red, web, Mikrotik...)");
         Console.WriteLine("  3. Memoria relajada (coincidencia parcial)");
         Console.WriteLine("  4. DeepSeek ??? " + (hasDeepSeek ? "ACTIVO" : "inactivo (falta DEEPSEEK_API_KEY)"));
+        Console.WriteLine("  Local    -> " + (File.Exists(Path.Combine(Home, "local_brain.py")) ? "ACTIVO" : "inactivo (falta local_brain.py)"));
         Console.WriteLine("  5. Claude   ??? activo (fallback final)");
         Console.WriteLine();
         Console.WriteLine("Proximos pasos:");
@@ -385,7 +386,10 @@ class IanBrain
         // Para preguntas de una sola palabra: requiere match casi perfecto
         if (match.Score >= 0.20f && pw.Length == 1) return match.Program;
 
-        // Sin memoria confiable ??? DeepSeek (si tiene API key) ??? Claude
+        // Sin memoria confiable ??? Local ??? DeepSeek (si tiene API key) ??? Claude
+        string lc = AskLocalAsIan(prompt);
+        if (lc != null) return lc;
+
         string ds = AskDeepSeekAsIan(prompt);
         if (ds != null) return ds;
 
@@ -557,6 +561,68 @@ class IanBrain
     }
 
     // -------------------------------------------------------------------------
+    //  LOCAL FALLBACK ??? profesor local propio, sin APIs ni clave
+    // -------------------------------------------------------------------------
+
+    static string AskLocalAsIan(string prompt)
+    {
+        try
+        {
+            string localPy = Path.Combine(Home, "local_brain.py");
+            if (!File.Exists(localPy)) return null;
+
+            string domain = ClassifyDomain(Words(prompt));
+            string fullPrompt =
+                "Sos i@N, una IA local que corre en esta PC. " +
+                "Responde en espanol rioplatense, directo y sin formalismos. " +
+                "Dominio: " + domain + ". " +
+                "Maximo 4 oraciones. Sin markdown ni asteriscos. " +
+                "Pregunta: " + prompt;
+
+            var psi = new ProcessStartInfo();
+            psi.FileName = "python";
+            psi.Arguments = "\"" + localPy + "\" \"" + EscapeForIan(fullPrompt) + "\"";
+            psi.UseShellExecute = false;
+            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
+            psi.WorkingDirectory = Home;
+
+            string output = "";
+            using (var p = Process.Start(psi))
+            {
+                var t1 = new System.Threading.Thread(() => { try { output = p.StandardOutput.ReadToEnd(); } catch { } });
+                var t2 = new System.Threading.Thread(() => { try { p.StandardError.ReadToEnd(); } catch { } });
+                t1.Start();
+                t2.Start();
+                bool ok = p.WaitForExit(300000);
+                t1.Join(5000);
+                t2.Join(5000);
+                if (!ok || p.ExitCode != 0) return null;
+            }
+
+            string text = (output ?? "").Trim();
+            if (string.IsNullOrEmpty(text)) return null;
+
+            var code = new StringBuilder();
+            code.AppendLine("# i@N Brain v" + Version + " (via Local/" + domain + ")");
+            string[] lines = text.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string line in lines)
+            {
+                string l = line.Trim();
+                if (l.Length > 0)
+                    code.AppendLine("ia decir \"" + EscapeForIan(l) + "\"");
+            }
+
+            AppendMemory(prompt, code.ToString().Trim(), "local-auto");
+            return code.ToString();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    // -------------------------------------------------------------------------
     //  DEEPSEEK FALLBACK ??? segundo profesor externo
     // -------------------------------------------------------------------------
 
@@ -698,6 +764,7 @@ class IanBrain
             case "manual": return 1.0f;
             case "archivo": return 0.8f;
             case "claude-auto": return 0.6f;
+            case "local-auto": return 0.5f;
             case "deepseek-auto": return 0.4f;
             default: return 0.3f;
         }
