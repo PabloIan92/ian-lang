@@ -6,7 +6,7 @@ import urllib.request
 
 
 DEFAULT_URL = "http://127.0.0.1:8080/v1/chat/completions"
-TIMEOUT = 300
+TIMEOUT = 900  # inferencia local en CPU es lenta (15 min max)
 
 INSTALL_HELP = """No se encontro IA local en {url}
 

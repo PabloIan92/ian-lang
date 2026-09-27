@@ -23,3 +23,6 @@ ian_brain_v022.cs
 
 # Build artifacts
 BuildOutput/
+
+# Modelos GGUF locales (no se suben)
+models/

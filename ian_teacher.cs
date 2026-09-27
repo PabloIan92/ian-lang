@@ -274,7 +274,8 @@ class IanTeacher
             var stderrThread = new System.Threading.Thread(() => { try { error = process.StandardError.ReadToEnd(); } catch {} });
             stdoutThread.Start();
             stderrThread.Start();
-            if (!process.WaitForExit(180000))
+            int timeoutMs = teacher == "local" ? 900000 : 180000;
+            if (!process.WaitForExit(timeoutMs))
             {
                 try { process.Kill(); } catch { }
                 throw new Exception(teacher + " tardo demasiado en responder");
